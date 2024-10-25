@@ -1,13 +1,13 @@
 /*
 Создать класс Employee c полями id, name, age, salary.
  */
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private int id;
     private String name;
     private int age;
-    private double salary;
+    private int salary;
 
-    public Employee(int id, String name, int age, double salary) {
+    public Employee(int id, String name, int age, int salary) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -26,14 +26,20 @@ public class Employee {
         return age;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
     @Override
     public String toString() {
-        return String.format("id работника: %d, Имя: %s, %d года, Зарплата: %.2f "
+        return String.format("id работника: %d, Имя: %s, %d года, Зарплата: %d "
                 , id,name,age,salary)+System.lineSeparator();
 
+    }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        return salary-o.getSalary();
     }
 }
